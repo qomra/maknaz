@@ -1,4 +1,4 @@
-from neohub.index import Indexer
+from arhub.index import Indexer
 
 def test_indexer():
     index = Indexer("./hub/", "./hub/index.json")

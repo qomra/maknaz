@@ -10,14 +10,12 @@ def get_version() -> str:
                 return line.split(delim)[1]
     raise RuntimeError("Unable to find version string.")
 
-
-
 setup(
-    name="hub",
+    name="arhub",
     version=get_version(),
     author="Ridwan Jalali",
     author_email="jalalirs@gmail.com",
-    description="Client library to download and publish models, datasets and other repos on neo hub",
+    description="Client library to download and publish models, datasets and other repos on arhub",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     keywords="model-hub machine-learning models natural-language-processing deep-learning pytorch pretrained-models",

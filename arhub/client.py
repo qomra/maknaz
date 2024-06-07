@@ -4,8 +4,8 @@ import importlib
 from typing import Optional, List, Any
 from langchain_core.vectorstores import VectorStore
 
-# get full path NEO_MODULES_CACHE
-HUB = os.environ.get("NEO_MODULES_CACHE", os.path.expanduser("~/.neohub"))
+# get full path ARHUB_MODULES_CACHE
+HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
 # get absolute path
 HUB = os.path.abspath(HUB)
 
@@ -20,7 +20,7 @@ def load_dataset_repo(repo):
     
     kind = metadata.get("kind","script")
     if kind == "script":
-        return load_dataset(repo["full_path"],
+        return load_dataset(f"{repo['full_path']}",
                 data_dir=repo["full_path"],
                 trust_remote_code=True,
                 download_mode="reuse_cache_if_exists",
