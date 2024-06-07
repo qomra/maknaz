@@ -36,7 +36,7 @@ class Indexer:
     def index(self,return_index=False):
         # list all the repos in the hub
         
-        kinds = ["dataset","model","prompt","agent"]
+        kinds = ["dataset","model","prompt","agent","vdb"]
         repos = {"repos":[],"map":{}}
         for kind in kinds:
             kind_repos = glob.glob(f"{self.api_path}/{kind}/*/*")

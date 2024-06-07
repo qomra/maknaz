@@ -2,25 +2,49 @@
     "repos": [
         {
             "full_name": "thamaniya/EarlyVoice",
-            "owner": "thamniya",
+            "owner": "thamaniya",
             "name": "EarlyVoice",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arhub/hub/dataset/thamaniya/EarlyVoice"
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/thamaniya/EarlyVoice"
         },
         {
             "full_name": "wali/laws",
             "owner": "wali",
             "name": "laws",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arhub/hub/dataset/wali/laws"
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/wali/laws"
+        },
+        {
+            "full_name": "wali/lawsvdb",
+            "owner": "wali",
+            "name": "lawsvdb",
+            "kind": "vdb",
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/vdb/wali/lawsvdb"
         }
     ],
     "map": {
-        "aramco/EarlyVoice": 0,
-        "wali/laws": 1
+        "thamaniya/EarlyVoice": 0,
+        "wali/laws": 1,
+        "wali/lawsvdb": 2
     },
     "dataset": [
         0,
         2
+    ],
+    "model": [
+        2,
+        2
+    ],
+    "prompt": [
+        2,
+        2
+    ],
+    "agent": [
+        2,
+        2
+    ],
+    "vdb": [
+        2,
+        3
     ]
 }
