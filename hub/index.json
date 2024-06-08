@@ -1,25 +1,25 @@
 {
     "repos": [
         {
-            "full_name": "thamaniya/EarlyVoice",
-            "owner": "thamaniya",
+            "full_name": "pody/EarlyVoice",
+            "owner": "pody",
             "name": "EarlyVoice",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/thamaniya/EarlyVoice"
+            "full_path": "/home/jalalirs/Documents/code/bot/arhub/hub/dataset/pody/EarlyVoice"
         },
         {
             "full_name": "wali/laws",
             "owner": "wali",
             "name": "laws",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/wali/laws"
+            "full_path": "/home/jalalirs/Documents/code/bot/arhub/hub/dataset/wali/laws"
         },
         {
             "full_name": "wali/lawsvdb",
             "owner": "wali",
             "name": "lawsvdb",
             "kind": "vdb",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/vdb/wali/lawsvdb"
+            "full_path": "/home/jalalirs/Documents/code/bot/arhub/hub/vdb/wali/lawsvdb"
         }
     ],
     "map": {

@@ -33,7 +33,7 @@ class ArticleSummaryDataset(datasets.GeneratorBasedBuilder):
         
         Here we define the splits and download or extract the data if necessary.
         """
-        json_files = sorted(glob.glob(f"{HUB}/dataset/wali/laws/*.json"))[:10]
+        json_files = sorted(glob.glob(f"{HUB}/dataset/wali/laws/*.json"))
         return [
             datasets.SplitGenerator(
                 name=datasets.Split.TRAIN,

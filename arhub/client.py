@@ -155,6 +155,7 @@ class Client:
     def pull(self, owner_repo_commit: str, load: bool = True):
         repo = self.get_repo(owner_repo_commit)
         if load:
+            print("loading repo")
             repo = load_repo(repo)
         return repo
 
