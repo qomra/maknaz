@@ -68,7 +68,7 @@ class ArticleSummaryDataset(datasets.GeneratorBasedBuilder):
                 if "value" in data and "articles" in data["value"] and len(data["value"]["articles"]) > 0:
                     for index,article in enumerate(data["value"]["articles"]):
                         summary = article.get("summary")
-                        item = {"article_summary": summary, "article_name": index}
+                        item = {"article_summary": summary, "article_name": index+1}
                         for column in in_columns:
                             item[column] = data["value"].get(column,None)
                         if summary:

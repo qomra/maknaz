@@ -1,50 +1,66 @@
 {
     "repos": [
         {
-            "full_name": "pody/EarlyVoice",
-            "owner": "pody",
-            "name": "EarlyVoice",
+            "full_name": "thamaniya/okathsmall",
+            "owner": "thamaniya",
+            "name": "okathsmall",
             "kind": "dataset",
-            "full_path": "/home/jalalirs/Documents/code/bot/arhub/hub/dataset/pody/EarlyVoice"
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/thamaniya/okathsmall"
+        },
+        {
+            "full_name": "thamaniya/okath",
+            "owner": "thamaniya",
+            "name": "okath",
+            "kind": "dataset",
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/thamaniya/okath"
         },
         {
             "full_name": "wali/laws",
             "owner": "wali",
             "name": "laws",
             "kind": "dataset",
-            "full_path": "/home/jalalirs/Documents/code/bot/arhub/hub/dataset/wali/laws"
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/wali/laws"
+        },
+        {
+            "full_name": "openai/whisper-small",
+            "owner": "openai",
+            "name": "whisper-small",
+            "kind": "model",
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/model/openai/whisper-small"
         },
         {
             "full_name": "wali/lawsvdb",
             "owner": "wali",
             "name": "lawsvdb",
             "kind": "vdb",
-            "full_path": "/home/jalalirs/Documents/code/bot/arhub/hub/vdb/wali/lawsvdb"
+            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/vdb/wali/lawsvdb"
         }
     ],
     "map": {
-        "thamaniya/EarlyVoice": 0,
-        "wali/laws": 1,
-        "wali/lawsvdb": 2
+        "thamaniya/okathsmall": 0,
+        "thamaniya/okath": 1,
+        "wali/laws": 2,
+        "openai/whisper-small": 3,
+        "wali/lawsvdb": 4
     },
     "dataset": [
         0,
-        2
+        3
     ],
     "model": [
-        2,
-        2
+        3,
+        4
     ],
     "prompt": [
-        2,
-        2
+        4,
+        4
     ],
     "agent": [
-        2,
-        2
+        4,
+        4
     ],
     "vdb": [
-        2,
-        3
+        4,
+        5
     ]
 }

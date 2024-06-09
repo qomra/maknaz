@@ -160,3 +160,8 @@ cython_debug/
 #.idea/
 hub/dataset/*/*/*.json
 hub/dataset/*/*/*/*.wav
+hub/model/*/*/blobs/
+hub/model/*/*/refs/
+hub/model/*/*/snapshots/
+hub/vdb/*/*/index.faiss
+hub/vdb/*/*/index.pkl

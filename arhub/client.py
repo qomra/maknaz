@@ -28,8 +28,6 @@ def load_dataset_repo(repo):
     elif kind == "audio":
         return load_dataset("audiofolder", data_dir=repo["full_path"])
 
-
-
 def load_repo(repo):
     if repo["kind"] == "dataset":
         # check if datasets is installed
@@ -54,9 +52,7 @@ def load_repo(repo):
             res_dict = json.load(f)
         obj = loads(json.dumps(res_dict))
         return obj
-        
-        
-
+          
 def _get_api_path(api_path: Optional[str]) -> str:
     if api_path is None:
         api_path = HUB
@@ -96,8 +92,66 @@ class Client:
         return [r["full_name"] for r in repos[offset:offset+limit]]
         
 
-    def get_repo(self, repo_full_name: str):
-        repo = self.index["repos"][self.index["map"].get(repo_full_name)]
+    def get_repo(self, repo_full_name: str, download: bool = False):
+        repo = None
+        if repo_full_name in self.index["map"]:
+            repo = self.index["repos"][self.index["map"].get(repo_full_name)]
+            print(repo)
+            return repo
+        # check if it is a model in huggingface hub
+        
+        if not repo and not download:
+            print("Repo doesn't exist in arhub index. Use download=True to download the repo from huggingface hub")
+            return None
+        
+        # download repo from huggingface hub
+        from huggingface_hub import snapshot_download,HfApi
+        hf_api = HfApi()
+        repo_type = "model"
+        repo_kind = "model"
+        repo_author = repo_full_name.split("/")[0]
+        repo_name = repo_full_name.split("/")[1]
+        try:
+            repo = hf_api.repo_info(repo_full_name)
+        except:
+            try:
+                repo_type = "dataset"
+                repo_kind = "text"
+                repo = hf_api.dataset_info(repo_full_name,repo_type="dataset")
+                repo_tags = repo["tags"]
+                # find task_categories:category in tags
+                for tag in repo_tags:
+                    if "task_categories" in tag:
+                        repo_kind = tag.split(":")[1]
+                        break
+                
+            except:
+                print(f"Repo {repo_full_name} not found in huggingface hub")
+                return None
+        
+        repo_path = os.path.join(self.api_path,repo_type,repo_full_name)
+        repo = snapshot_download(repo_full_name, cache_dir=f"{self.api_path}/{repo_type}", repo_type=repo_type, ignore_patterns=["*.msgpack", "*.h5","*.bin"])
+        if repo_type == "model":
+            # mv folder from models--author--repo to author/repo
+            current_path = f"{self.api_path}/{repo_type}/models--{repo_author}--{repo_name}"
+            new_path = f"{self.api_path}/{repo_type}/{repo_author}/{repo_name}"
+            print(f"Moving {current_path} to {new_path}")
+            # make author directory
+            os.makedirs(os.path.join(self.api_path,repo_type,repo_author),exist_ok=True)
+            os.rename(current_path,new_path)
+        # write metadata to api_path/repo_full_name/metadata.json
+        metadata = {
+            "kind": repo_kind
+        }
+        
+        with open(os.path.join(repo_path, "metadata.json"), "w") as f:
+            json.dump(metadata, f)
+
+        repo = {
+            'full_name': repo_full_name,
+            'owner': repo_author, 
+            'name': repo_name, 
+            'kind': repo_type, 'full_path': repo_path}
         return repo
 
     def create_repo(
@@ -152,10 +206,12 @@ class Client:
                 json.dump(metadata, f)
         
 
-    def pull(self, owner_repo_commit: str, load: bool = True):
-        repo = self.get_repo(owner_repo_commit)
+    def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False):
+        repo = self.get_repo(owner_repo_commit,download=download)
+        if repo is None:
+            print(f"Repo {owner_repo_commit} not found")
+            return None
         if load:
-            print("loading repo")
             repo = load_repo(repo)
         return repo
 
