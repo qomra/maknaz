@@ -4,6 +4,8 @@ import importlib
 from typing import Optional, List, Any
 from langchain_core.vectorstores import VectorStore
 
+from .types import *
+
 # get full path ARHUB_MODULES_CACHE
 HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
 # get absolute path
@@ -194,6 +196,7 @@ class Client:
         if isinstance(data_object, VectorStore):
             # save vectorstore to api_path/repo_full_name
             save_location = os.path.join(self.api_path,"vdb", repo_full_name)
+            os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
             # write metadata to api_path/repo_full_name/metadata.json
             metadata = {
@@ -203,8 +206,26 @@ class Client:
                 "module": data_object.__module__
             }
             with open(os.path.join(save_location, "metadata.json"), "w") as f:
-                json.dump(metadata, f)
+                json.dump(metadata, f,indent=4)
         
+        # check if data_object is evaluation
+        if isinstance(data_object,STTEvaluation):
+            save_location = os.path.join(self.api_path,"evaluation", repo_full_name)
+            # make directory if not exists
+            os.makedirs(save_location,exist_ok=True)
+            data_object.save_local(save_location)
+            # write metadata to api_path/repo_full_name/metadata.json
+            metadata = {
+                "kind": "evaluation",
+                "full_path": save_location,
+                "class": data_object.__class__.__name__,
+                "module": data_object.__module__,
+                "model": data_object.model,
+                "dataset": data_object.dataset,
+                "splits": data_object.splits
+            }
+            with open(os.path.join(save_location, "metadata.json"), "w") as f:
+                json.dump(metadata, f,indent=4)
 
     def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False):
         repo = self.get_repo(owner_repo_commit,download=download)
