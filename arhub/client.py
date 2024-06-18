@@ -11,7 +11,7 @@ HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
 # get absolute path
 HUB = os.path.abspath(HUB)
 
-def load_dataset_repo(repo):
+def load_dataset_repo(repo,split=None,**kwargs):
     try:
         from datasets import load_dataset
     except ImportError:
@@ -28,12 +28,12 @@ def load_dataset_repo(repo):
                 download_mode="reuse_cache_if_exists",
                 cache_dir=None)
     elif kind == "audio":
-        return load_dataset("audiofolder", data_dir=repo["full_path"])
+        return load_dataset("audiofolder", data_dir=repo["full_path"],split=split)
 
-def load_repo(repo):
+def load_repo(repo, **kwargs):
     if repo["kind"] == "dataset":
         # check if datasets is installed
-        return load_dataset_repo(repo)
+        return load_dataset_repo(repo,**kwargs)
     elif repo["kind"] == "vectorstore":
         clss_name = repo["class"]
         # import class from string if not already imported
@@ -227,12 +227,12 @@ class Client:
             with open(os.path.join(save_location, "metadata.json"), "w") as f:
                 json.dump(metadata, f,indent=4)
 
-    def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False):
+    def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False, **kwargs):
         repo = self.get_repo(owner_repo_commit,download=download)
         if repo is None:
             print(f"Repo {owner_repo_commit} not found")
             return None
         if load:
-            repo = load_repo(repo)
+            repo = load_repo(repo, **kwargs)
         return repo
 
