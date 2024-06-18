@@ -16,18 +16,18 @@ def load_dataset_repo(repo,split=None,**kwargs):
         from datasets import load_dataset
     except ImportError:
         raise ImportError("datasets is not installed. Please install it using `pip install datasets`")
-    # load metadata file from full_path
 
     
     kind = repo.get("loader","script")
+    path = f"{HUB}/{repo['path']}"
     if kind == "script":
-        return load_dataset(f"{repo['full_path']}",
-                data_dir=repo["full_path"],
+        return load_dataset(path,
+                data_dir=path,
                 trust_remote_code=True,
                 download_mode="reuse_cache_if_exists",
                 cache_dir=None)
     elif kind == "audio":
-        return load_dataset("audiofolder", data_dir=repo["full_path"],split=split)
+        return load_dataset("audiofolder", data_dir=path,split=split)
 
 def load_repo(repo, **kwargs):
     if repo["kind"] == "dataset":
@@ -43,13 +43,13 @@ def load_repo(repo, **kwargs):
                 globals()[clss_name] = getattr(mod, clss_name)
             except ImportError:
                 raise ImportError(f"Module {mod_name} not found")
-        # load vectorstore from full_path
-        return globals()[clss_name].load_local(repo["full_path"])
+        # load vectorstore from path
+        return globals()[clss_name].load_local(f"{HUB}/{repo['path']}")
     elif repo["kind"] == "prompt":
         from langchain_core.load.load import loads
         from langchain_core.prompts import BasePromptTemplate
-        # load manifest from full_path
-        with open(repo["full_path"]) as f:
+        # load manifest from path
+        with open(f"{HUB}/{repo['path']}") as f:
             res_dict = json.load(f)
         obj = loads(json.dumps(res_dict))
         return obj
@@ -130,7 +130,7 @@ class Client:
                 print(f"Repo {repo_full_name} not found in huggingface hub")
                 return None
         
-        repo_path = os.path.join(self.api_path,repo_type,repo_full_name)
+        repo_path = os.path.join(repo_type,repo_full_name)
         repo = snapshot_download(repo_full_name, cache_dir=f"{self.api_path}/{repo_type}", repo_type=repo_type, ignore_patterns=["*.msgpack", "*.h5","*.bin"])
         if repo_type == "model":
             # mv folder from models--author--repo to author/repo
@@ -140,19 +140,13 @@ class Client:
             # make author directory
             os.makedirs(os.path.join(self.api_path,repo_type,repo_author),exist_ok=True)
             os.rename(current_path,new_path)
-        # write metadata to api_path/repo_full_name/metadata.json
-        metadata = {
-            "kind": repo_kind
-        }
-        
-        with open(os.path.join(repo_path, "metadata.json"), "w") as f:
-            json.dump(metadata, f)
-
+ 
+    
         repo = {
             'full_name': repo_full_name,
             'owner': repo_author, 
             'name': repo_name, 
-            'kind': repo_type, 'full_path': repo_path}
+            'kind': repo_type, 'path': repo_path}
         return repo
 
     def create_repo(
