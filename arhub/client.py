@@ -97,9 +97,9 @@ class Client:
 
     def get_repo(self, repo_full_name: str, download: bool = False):
         repo = None
-        if repo_full_name in self.index["map"]:
+        # check if repo exists in index and snapshot exists
+        if repo_full_name in self.index["map"] and os.path.exists(f"{self.api_path}/{repo_full_name}/snapshot/"):
             repo = self.index["repos"][self.index["map"].get(repo_full_name)]
-            print(repo)
             return repo
         # check if it is a model in huggingface hub
         
