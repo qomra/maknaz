@@ -5,35 +5,47 @@
             "owner": "thamaniya",
             "name": "okathsmall",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/thamaniya/okathsmall"
+            "path": "dataset/thamaniya/okathsmall",
+            "loader": "audio"
         },
         {
             "full_name": "thamaniya/okath",
             "owner": "thamaniya",
             "name": "okath",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/thamaniya/okath"
+            "path": "dataset/thamaniya/okath",
+            "loader": "audio"
         },
         {
             "full_name": "wali/laws",
             "owner": "wali",
             "name": "laws",
             "kind": "dataset",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/dataset/wali/laws"
+            "path": "dataset/wali/laws",
+            "loader": "script"
         },
         {
             "full_name": "openai/whisper-small",
             "owner": "openai",
             "name": "whisper-small",
             "kind": "model",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/model/openai/whisper-small"
+            "path": "model/openai/whisper-small"
         },
         {
             "full_name": "wali/lawsvdb",
             "owner": "wali",
             "name": "lawsvdb",
             "kind": "vdb",
-            "full_path": "/Users/jalalirs/Documents/code/arabot/arhub/hub/vdb/wali/lawsvdb"
+            "path": "vdb/wali/lawsvdb",
+            "class": "VDB",
+            "module": "arqam.vdb"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_small",
+            "owner": "thamaniya",
+            "name": "okath_whisper_small",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_small"
         }
     ],
     "map": {
@@ -41,7 +53,8 @@
         "thamaniya/okath": 1,
         "wali/laws": 2,
         "openai/whisper-small": 3,
-        "wali/lawsvdb": 4
+        "wali/lawsvdb": 4,
+        "thamaniya/okath_whisper_small": 5
     },
     "dataset": [
         0,
@@ -62,5 +75,9 @@
     "vdb": [
         4,
         5
+    ],
+    "evaluation": [
+        5,
+        6
     ]
 }

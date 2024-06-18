@@ -17,10 +17,9 @@ def load_dataset_repo(repo,split=None,**kwargs):
     except ImportError:
         raise ImportError("datasets is not installed. Please install it using `pip install datasets`")
     # load metadata file from full_path
-    with open(os.path.join(repo["full_path"], "metadata.json")) as f:
-        metadata = json.load(f)
+
     
-    kind = metadata.get("kind","script")
+    kind = repo.get("loader","script")
     if kind == "script":
         return load_dataset(f"{repo['full_path']}",
                 data_dir=repo["full_path"],
@@ -198,15 +197,13 @@ class Client:
             save_location = os.path.join(self.api_path,"vdb", repo_full_name)
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
-            # write metadata to api_path/repo_full_name/metadata.json
-            metadata = {
-                "kind": "vectorstore",
-                "full_path": save_location,
+            # write info to api_path/repo_full_name/info.json
+            info = {
                 "class": data_object.__class__.__name__,
                 "module": data_object.__module__
             }
-            with open(os.path.join(save_location, "metadata.json"), "w") as f:
-                json.dump(metadata, f,indent=4)
+            with open(os.path.join(save_location, "info.json"), "w") as f:
+                json.dump(info, f,indent=4)
         
         # check if data_object is evaluation
         if isinstance(data_object,STTEvaluation):
@@ -214,18 +211,16 @@ class Client:
             # make directory if not exists
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
-            # write metadata to api_path/repo_full_name/metadata.json
-            metadata = {
-                "kind": "evaluation",
-                "full_path": save_location,
+            # write info to api_path/repo_full_name/info.json
+            info = {
                 "class": data_object.__class__.__name__,
                 "module": data_object.__module__,
                 "model": data_object.model,
                 "dataset": data_object.dataset,
-                "splits": data_object.splits
+                "split": data_object.split
             }
-            with open(os.path.join(save_location, "metadata.json"), "w") as f:
-                json.dump(metadata, f,indent=4)
+            with open(os.path.join(save_location, "info.json"), "w") as f:
+                json.dump(info, f,indent=4)
 
     def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False, **kwargs):
         repo = self.get_repo(owner_repo_commit,download=download)

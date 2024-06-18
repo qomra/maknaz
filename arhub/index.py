@@ -18,14 +18,14 @@ class Indexer:
             full_name = "/".join(d.split("/")[-2:])
             owner     = d.split("/")[-2]
             name      = d.split("/")[-1]
-            
-            full_path = self.api_path + "/"+ kind + "/" + full_name
+            # find relative path of api_path
+            path =  kind + "/" + full_name
             json_data.append({
                 "full_name":full_name,
                 "owner":owner,
                 "name":name,
                 "kind":kind,
-                "full_path":full_path
+                "path":path
             })
             real_name = full_name.replace(".json","")
             map_data[real_name] = current_index
@@ -36,7 +36,7 @@ class Indexer:
     def index(self,return_index=False):
         # list all the repos in the hub
         
-        kinds = ["dataset","model","prompt","agent","vdb"]
+        kinds = ["dataset","model","prompt","agent","vdb","evaluation"]
         repos = {"repos":[],"map":{}}
         for kind in kinds:
             kind_repos = glob.glob(f"{self.api_path}/{kind}/*/*")
@@ -44,6 +44,12 @@ class Indexer:
             repos[kind] = [len(repos["repos"]),len(repos["repos"])+len(indexed_repos)]
             repos["repos"].extend(indexed_repos)
             repos["map"].update(map_data)
+            # find if info.json exists
+            for r in indexed_repos:
+                if os.path.exists(f"{self.api_path}/{r['path']}/info.json"):
+                    with open(f"{self.api_path}/{r['path']}/info.json") as f:
+                        info = json.load(f)
+                        r.update(info)
             
         if return_index:
             return return_index
