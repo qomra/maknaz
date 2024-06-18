@@ -27,7 +27,9 @@ def load_dataset_repo(repo,split=None,**kwargs):
                 download_mode="reuse_cache_if_exists",
                 cache_dir=None)
     elif kind == "audio":
-        return load_dataset("audiofolder", data_dir=path,split=split)
+        if split is None:
+            return load_dataset("audiofolder", data_dir=path,split=split)
+        return {split:load_dataset("audiofolder", data_dir=path,split=split)}
 
 def load_repo(repo, **kwargs):
     if repo["kind"] == "dataset":
@@ -217,6 +219,7 @@ class Client:
                 json.dump(info, f,indent=4)
 
     def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False, **kwargs):
+
         repo = self.get_repo(owner_repo_commit,download=download)
         if repo is None:
             print(f"Repo {owner_repo_commit} not found")
