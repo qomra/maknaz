@@ -14,7 +14,7 @@ class STTEvaluation(BaseEvaluation):
     wer:        Union[List[List[float]],List[float]]
     
     def save_local(self,path):
-        splits     = self.split if self.split else ["test"]
+        splits     = [self.split] if self.split else ["train","valid","test"]
         file_name  = self.file_name if self.file_name else [self.file_name]
         actual     = self.actual if type(self.actual[0]) == list else [self.actual]
         prediction = self.prediction if type(self.prediction[0]) == list else [self.prediction]
