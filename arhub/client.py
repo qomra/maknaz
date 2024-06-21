@@ -219,6 +219,20 @@ class Client:
             with open(os.path.join(save_location, "info.json"), "w") as f:
                 json.dump(info, f,indent=4)
 
+        # check if data_object is a finetunedmodel
+        if isinstance(data_object,ACFinetunedModel):
+            current_local_path = data_object.local_path
+            new_path           = os.path.join(self.api_path,"model",repo_full_name)
+            owner              = repo_full_name.split("/")[0]
+            os.makedirs(os.path.join(self.api_path,"model",owner),exist_ok=True)
+            os.rename(current_local_path,new_path)
+            info = {
+                "base_model": data_object.base_model,
+                "dataset": data_object.dataset
+            }
+            with open(os.path.join(new_path, "info.json"), "w") as f:
+                json.dump(info, f,indent=4)
+
     def pull(self, owner_repo_commit: str, load: bool = True, download: bool = False, **kwargs):
 
         repo = self.get_repo(owner_repo_commit,download=download)
