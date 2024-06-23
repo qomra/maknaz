@@ -101,7 +101,6 @@ class Client:
         if repo_full_name in self.index["map"] :
             repo = self.index["repos"][self.index["map"].get(repo_full_name)]
             path = f"{self.api_path}/{repo['path']}"
-            print(path)
             if repo["kind"] != "model" or os.path.exists(f"{path}/snapshots") or os.path.exists(f"{path}/model.safetensors"):
                 return repo
         # check if it is a model in huggingface hub
