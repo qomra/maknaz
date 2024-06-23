@@ -1,0 +1,7 @@
+{
+    "class": "STTEvaluation",
+    "module": "arhub.types.evaluation",
+    "model": "openai/whisper-small",
+    "dataset": "thamaniya/okath",
+    "split": "test"
+}

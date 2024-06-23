@@ -62,6 +62,14 @@
             "dataset": "thamaniya/okath"
         },
         {
+            "full_name": "thamaniya/whisper_8_medium",
+            "owner": "thamaniya",
+            "name": "whisper_8_medium",
+            "kind": "model",
+            "path": "model/thamaniya/whisper_8_medium",
+            "base_model": "openai/whisper-medium"
+        },
+        {
             "full_name": "wali/lawsvdb",
             "owner": "wali",
             "name": "lawsvdb",
@@ -69,6 +77,54 @@
             "path": "vdb/wali/lawsvdb",
             "class": "VDB",
             "module": "arqam.vdb"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_large_v3",
+            "owner": "thamaniya",
+            "name": "okath_whisper_large_v3",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_large_v3",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "openai/whisper-large-v3",
+            "dataset": "thamaniya/okath",
+            "split": "test"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_medium",
+            "owner": "thamaniya",
+            "name": "okath_whisper_medium",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_medium",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "openai/whisper-medium",
+            "dataset": "thamaniya/okath",
+            "split": "test"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_small",
+            "owner": "thamaniya",
+            "name": "okath_whisper_small",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_small",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "openai/whisper-small",
+            "dataset": "thamaniya/okath",
+            "split": "test"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_8",
+            "owner": "thamaniya",
+            "name": "okath_whisper_8",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_8",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "thamaniya/whisper_8",
+            "dataset": "thamaniya/okath",
+            "split": "test"
         }
     ],
     "map": {
@@ -80,7 +136,12 @@
         "openai/whisper-small": 5,
         "openai/whisper-medium": 6,
         "thamaniya/whisper_8": 7,
-        "wali/lawsvdb": 8
+        "thamaniya/whisper_8_medium": 8,
+        "wali/lawsvdb": 9,
+        "thamaniya/okath_whisper_large_v3": 10,
+        "thamaniya/okath_whisper_medium": 11,
+        "thamaniya/okath_whisper_small": 12,
+        "thamaniya/okath_whisper_8": 13
     },
     "dataset": [
         0,
@@ -88,22 +149,22 @@
     ],
     "model": [
         4,
-        8
+        9
     ],
     "prompt": [
-        8,
-        8
-    ],
-    "agent": [
-        8,
-        8
-    ],
-    "vdb": [
-        8,
-        9
-    ],
-    "evaluation": [
         9,
         9
+    ],
+    "agent": [
+        9,
+        9
+    ],
+    "vdb": [
+        9,
+        10
+    ],
+    "evaluation": [
+        10,
+        14
     ]
 }
