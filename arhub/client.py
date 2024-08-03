@@ -29,6 +29,7 @@ def load_dataset_repo(repo,split=None,**kwargs):
     elif kind == "audio":
         if split is None:
             return load_dataset("audiofolder", data_dir=path,split=split)
+        
         return {split:load_dataset("audiofolder", data_dir=path,split=split)}
 
 def load_repo(repo, **kwargs):
@@ -47,6 +48,7 @@ def load_repo(repo, **kwargs):
                 raise ImportError(f"Module {mod_name} not found")
         # load vectorstore from path
         return globals()[clss_name].load_local(f"{HUB}/{repo['path']}")
+    
     elif repo["kind"] == "prompt":
         from langchain_core.load.load import loads
         from langchain_core.prompts import BasePromptTemplate
@@ -55,7 +57,11 @@ def load_repo(repo, **kwargs):
             res_dict = json.load(f)
         obj = loads(json.dumps(res_dict))
         return obj
-          
+    
+    elif repo["kind"] == "evaluation":
+        evaluation = globals()[repo["class"]].load(repo)
+        return evaluation
+
 def _get_api_path(api_path: Optional[str]) -> str:
     if api_path is None:
         api_path = HUB
@@ -101,10 +107,12 @@ class Client:
         if repo_full_name in self.index["map"] :
             repo = self.index["repos"][self.index["map"].get(repo_full_name)]
             path = f"{self.api_path}/{repo['path']}"
-            if repo["kind"] != "model" or os.path.exists(f"{path}/snapshots") or os.path.exists(f"{path}/model.safetensors"):
+            if not download or \
+                repo["kind"] != "model" or \
+                os.path.exists(f"{path}/snapshots") or \
+                os.path.exists(f"{path}/model.safetensors"):
                 return repo
         # check if it is a model in huggingface hub
-        
         if not repo and not download:
             print("Repo doesn't exist in arhub index. Use download=True to download the repo from huggingface hub")
             return None

@@ -1,14 +1,6 @@
 {
     "repos": [
         {
-            "full_name": "wali/laws",
-            "owner": "wali",
-            "name": "laws",
-            "kind": "dataset",
-            "path": "dataset/wali/laws",
-            "loader": "script"
-        },
-        {
             "full_name": "thamaniya/okathsmall",
             "owner": "thamaniya",
             "name": "okathsmall",
@@ -32,18 +24,46 @@
             "loader": "audio"
         },
         {
+            "full_name": "wali/laws",
+            "owner": "wali",
+            "name": "laws",
+            "kind": "dataset",
+            "path": "dataset/wali/laws",
+            "loader": "script"
+        },
+        {
+            "full_name": "thamaniya/whisper_8_medium",
+            "owner": "thamaniya",
+            "name": "whisper_8_medium",
+            "kind": "model",
+            "path": "model/thamaniya/whisper_8_medium",
+            "base_model": "openai/whisper-medium",
+            "dataset": "thamaniya/okath"
+        },
+        {
+            "full_name": "thamaniya/whisper_8",
+            "owner": "thamaniya",
+            "name": "whisper_8",
+            "kind": "model",
+            "path": "model/thamaniya/whisper_8",
+            "base_model": "openai/whisper-small",
+            "dataset": "thamaniya/okathsmall"
+        },
+        {
+            "full_name": "thamaniya/whisper_8_large_v3",
+            "owner": "thamaniya",
+            "name": "whisper_8_large_v3",
+            "kind": "model",
+            "path": "model/thamaniya/whisper_8_large_v3",
+            "base_model": "openai/whisper-large-v3",
+            "dataset": "thamaniya/okath"
+        },
+        {
             "full_name": "openai/whisper-large-v3",
             "owner": "openai",
             "name": "whisper-large-v3",
             "kind": "model",
             "path": "model/openai/whisper-large-v3"
-        },
-        {
-            "full_name": "openai/whisper-small",
-            "owner": "openai",
-            "name": "whisper-small",
-            "kind": "model",
-            "path": "model/openai/whisper-small"
         },
         {
             "full_name": "openai/whisper-medium",
@@ -53,21 +73,11 @@
             "path": "model/openai/whisper-medium"
         },
         {
-            "full_name": "thamaniya/whisper_8",
-            "owner": "thamaniya",
-            "name": "whisper_8",
+            "full_name": "openai/whisper-small",
+            "owner": "openai",
+            "name": "whisper-small",
             "kind": "model",
-            "path": "model/thamaniya/whisper_8",
-            "base_model": "openai/whisper-small",
-            "dataset": "thamaniya/okath"
-        },
-        {
-            "full_name": "thamaniya/whisper_8_medium",
-            "owner": "thamaniya",
-            "name": "whisper_8_medium",
-            "kind": "model",
-            "path": "model/thamaniya/whisper_8_medium",
-            "base_model": "openai/whisper-medium"
+            "path": "model/openai/whisper-small"
         },
         {
             "full_name": "wali/lawsvdb",
@@ -77,6 +87,18 @@
             "path": "vdb/wali/lawsvdb",
             "class": "VDB",
             "module": "arqam.vdb"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_8_medium",
+            "owner": "thamaniya",
+            "name": "okath_whisper_8_medium",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_8_medium",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "thamaniya/whisper_8_medium",
+            "dataset": "thamaniya/okath",
+            "split": "test"
         },
         {
             "full_name": "thamaniya/okath_whisper_large_v3",
@@ -91,14 +113,28 @@
             "split": "test"
         },
         {
-            "full_name": "thamaniya/okath_whisper_medium",
+            "full_name": "thamaniya/evaluation.ipynb",
             "owner": "thamaniya",
-            "name": "okath_whisper_medium",
+            "name": "evaluation.ipynb",
             "kind": "evaluation",
-            "path": "evaluation/thamaniya/okath_whisper_medium",
+            "path": "evaluation/thamaniya/evaluation.ipynb"
+        },
+        {
+            "full_name": "thamaniya/wer.png",
+            "owner": "thamaniya",
+            "name": "wer.png",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/wer.png"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_8_large_v3",
+            "owner": "thamaniya",
+            "name": "okath_whisper_8_large_v3",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_8_large_v3",
             "class": "STTEvaluation",
             "module": "arhub.types.evaluation",
-            "model": "openai/whisper-medium",
+            "model": "thamaniya/whisper_8_large_v3",
             "dataset": "thamaniya/okath",
             "split": "test"
         },
@@ -111,6 +147,18 @@
             "class": "STTEvaluation",
             "module": "arhub.types.evaluation",
             "model": "openai/whisper-small",
+            "dataset": "thamaniya/okath",
+            "split": "test"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_medium",
+            "owner": "thamaniya",
+            "name": "okath_whisper_medium",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_medium",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "openai/whisper-medium",
             "dataset": "thamaniya/okath",
             "split": "test"
         },
@@ -128,20 +176,25 @@
         }
     ],
     "map": {
-        "wali/laws": 0,
-        "thamaniya/okathsmall": 1,
-        "thamaniya/okathlong": 2,
-        "thamaniya/okath": 3,
-        "openai/whisper-large-v3": 4,
-        "openai/whisper-small": 5,
-        "openai/whisper-medium": 6,
-        "thamaniya/whisper_8": 7,
-        "thamaniya/whisper_8_medium": 8,
-        "wali/lawsvdb": 9,
-        "thamaniya/okath_whisper_large_v3": 10,
-        "thamaniya/okath_whisper_medium": 11,
-        "thamaniya/okath_whisper_small": 12,
-        "thamaniya/okath_whisper_8": 13
+        "thamaniya/okathsmall": 0,
+        "thamaniya/okathlong": 1,
+        "thamaniya/okath": 2,
+        "wali/laws": 3,
+        "thamaniya/whisper_8_medium": 4,
+        "thamaniya/whisper_8": 5,
+        "thamaniya/whisper_8_large_v3": 6,
+        "openai/whisper-large-v3": 7,
+        "openai/whisper-medium": 8,
+        "openai/whisper-small": 9,
+        "wali/lawsvdb": 10,
+        "thamaniya/okath_whisper_8_medium": 11,
+        "thamaniya/okath_whisper_large_v3": 12,
+        "thamaniya/evaluation.ipynb": 13,
+        "thamaniya/wer.png": 14,
+        "thamaniya/okath_whisper_8_large_v3": 15,
+        "thamaniya/okath_whisper_small": 16,
+        "thamaniya/okath_whisper_medium": 17,
+        "thamaniya/okath_whisper_8": 18
     },
     "dataset": [
         0,
@@ -149,22 +202,22 @@
     ],
     "model": [
         4,
-        9
-    ],
-    "prompt": [
-        9,
-        9
-    ],
-    "agent": [
-        9,
-        9
-    ],
-    "vdb": [
-        9,
         10
     ],
-    "evaluation": [
+    "prompt": [
         10,
-        14
+        10
+    ],
+    "agent": [
+        10,
+        10
+    ],
+    "vdb": [
+        10,
+        11
+    ],
+    "evaluation": [
+        11,
+        19
     ]
 }
