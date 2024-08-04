@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 
 def get_version() -> str:
-    rel_path = "src/hub/__init__.py"
+    rel_path = "arhub/__init__.py"
     with open(rel_path, "r") as fp:
         for line in fp.read().splitlines():
             if line.startswith("__version__"):
@@ -20,8 +20,8 @@ setup(
     long_description_content_type="text/markdown",
     keywords="model-hub machine-learning models natural-language-processing deep-learning pytorch pretrained-models",
     license="Apache",
-    package_dir={"": "src"},
-    packages=find_packages("src"),
+    package_dir={"": "."},
+    packages=find_packages("."),
     python_requires=">=3.8.0",
     classifiers=[
         "Intended Audience :: Developers",
