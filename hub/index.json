@@ -38,6 +38,14 @@
             "loader": "audio"
         },
         {
+            "full_name": "thamaniya/7iwar_small",
+            "owner": "thamaniya",
+            "name": "7iwar_small",
+            "kind": "dataset",
+            "path": "dataset/thamaniya/7iwar_small",
+            "loader": "audio"
+        },
+        {
             "full_name": "thamaniya/okath",
             "owner": "thamaniya",
             "name": "okath",
@@ -203,46 +211,47 @@
         "thamaniya/okathsmall": 2,
         "thamaniya/okathlong": 3,
         "thamaniya/7iwar": 4,
-        "thamaniya/okath": 5,
-        "wali/laws": 6,
-        "thamaniya/whisper_8_medium": 7,
-        "thamaniya/whisper_8": 8,
-        "thamaniya/whisper_8_large_v3": 9,
-        "openai/whisper-large-v3": 10,
-        "openai/whisper-medium": 11,
-        "openai/whisper-small": 12,
-        "wali/lawsvdb": 13,
-        "thamaniya/okath_whisper_8_medium": 14,
-        "thamaniya/okath_whisper_large_v3": 15,
-        "thamaniya/evaluation.ipynb": 16,
-        "thamaniya/wer.png": 17,
-        "thamaniya/okath_whisper_8_large_v3": 18,
-        "thamaniya/okath_whisper_small": 19,
-        "thamaniya/okath_whisper_medium": 20,
-        "thamaniya/okath_whisper_8": 21
+        "thamaniya/7iwar_small": 5,
+        "thamaniya/okath": 6,
+        "wali/laws": 7,
+        "thamaniya/whisper_8_medium": 8,
+        "thamaniya/whisper_8": 9,
+        "thamaniya/whisper_8_large_v3": 10,
+        "openai/whisper-large-v3": 11,
+        "openai/whisper-medium": 12,
+        "openai/whisper-small": 13,
+        "wali/lawsvdb": 14,
+        "thamaniya/okath_whisper_8_medium": 15,
+        "thamaniya/okath_whisper_large_v3": 16,
+        "thamaniya/evaluation.ipynb": 17,
+        "thamaniya/wer.png": 18,
+        "thamaniya/okath_whisper_8_large_v3": 19,
+        "thamaniya/okath_whisper_small": 20,
+        "thamaniya/okath_whisper_medium": 21,
+        "thamaniya/okath_whisper_8": 22
     },
     "dataset": [
         0,
-        7
+        8
     ],
     "model": [
-        7,
-        13
-    ],
-    "prompt": [
-        13,
-        13
-    ],
-    "agent": [
-        13,
-        13
-    ],
-    "vdb": [
-        13,
+        8,
         14
     ],
-    "evaluation": [
+    "prompt": [
         14,
-        22
+        14
+    ],
+    "agent": [
+        14,
+        14
+    ],
+    "vdb": [
+        14,
+        15
+    ],
+    "evaluation": [
+        15,
+        23
     ]
 }
