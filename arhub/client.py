@@ -242,7 +242,7 @@ class Client:
             new_path           = os.path.join(api_path,"model",repo_full_name)
             owner              = repo_full_name.split("/")[0]
             os.makedirs(os.path.join(api_path,"model",owner),exist_ok=True)
-            os.rename(current_local_path,new_path)
+            shutil.copytree(current_local_path,new_path, dirs_exist_ok=True)
             info = {
                 "base_model": data_object.base_model,
                 "dataset": data_object.dataset
