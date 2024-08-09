@@ -1,5 +1,6 @@
 import os
 import json
+import shutil
 import importlib
 from typing import Optional, List, Any
 from langchain_core.vectorstores import VectorStore
@@ -153,7 +154,8 @@ class Client:
             print(f"Moving {current_path} to {new_path}")
             # make author directory
             os.makedirs(os.path.join(self.api_path,repo_type,repo_author),exist_ok=True)
-            os.rename(current_path,new_path)
+            # copy directory to new path
+            shutil.copytree(current_path,new_path, dirs_exist_ok=True)
  
     
         repo = {
