@@ -194,15 +194,19 @@ class Client:
         self,
         data_object: Any,
         repo_full_name: str,
+        api_path: Optional[str] = None,
         *,
         parent_commit_hash: Optional[str] = "latest",
         new_repo_is_public: bool = False,
         new_repo_description: str = "",
     ):
+        if api_path is None:
+            api_path = self.api_path
+
         # check if data_object is a vectorstore
         if isinstance(data_object, VectorStore):
             # save vectorstore to api_path/repo_full_name
-            save_location = os.path.join(self.api_path,"vdb", repo_full_name)
+            save_location = os.path.join(api_path,"vdb", repo_full_name)
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
             # write info to api_path/repo_full_name/info.json
@@ -215,7 +219,7 @@ class Client:
         
         # check if data_object is evaluation
         if isinstance(data_object,STTEvaluation):
-            save_location = os.path.join(self.api_path,"evaluation", repo_full_name)
+            save_location = os.path.join(api_path,"evaluation", repo_full_name)
             # make directory if not exists
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
@@ -233,9 +237,9 @@ class Client:
         # check if data_object is a finetunedmodel
         if isinstance(data_object,ACFinetunedModel):
             current_local_path = data_object.local_path
-            new_path           = os.path.join(self.api_path,"model",repo_full_name)
+            new_path           = os.path.join(api_path,"model",repo_full_name)
             owner              = repo_full_name.split("/")[0]
-            os.makedirs(os.path.join(self.api_path,"model",owner),exist_ok=True)
+            os.makedirs(os.path.join(api_path,"model",owner),exist_ok=True)
             os.rename(current_local_path,new_path)
             info = {
                 "base_model": data_object.base_model,
