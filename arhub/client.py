@@ -6,8 +6,10 @@ from langchain_core.vectorstores import VectorStore
 
 from .types import *
 
+# get script path
+SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # get full path ARHUB_MODULES_CACHE
-HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
+HUB = os.environ.get("ARHUB_MODULES_CACHE", f"{SCRIPT_PATH}/../hub")
 # get absolute path
 HUB = os.path.abspath(HUB)
 
