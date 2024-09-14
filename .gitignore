@@ -154,15 +154,15 @@ cython_debug/
 
 # PyCharm
 #  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
+#  be found at https://github.com/gitmaknaz_/gitignore/blob/main/Global/JetBrains.gitignore
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-hub/dataset/*/*/*.json
-!hub/dataset/*/*/info.json
-hub/dataset/*/*/*/*.wav
-hub/model/*/*/blobs/
-hub/model/*/*/refs/
-hub/model/*/*/snapshots/
-hub/vdb/*/*/index.faiss
-hub/vdb/*/*/index.pkl
+maknaz_/dataset/*/*/*.json
+!maknaz_/dataset/*/*/info.json
+maknaz_/dataset/*/*/*/*.wav
+maknaz_/model/*/*/blobs/
+maknaz_/model/*/*/refs/
+maknaz_/model/*/*/snapshots/
+maknaz_/vdb/*/*/index.faiss
+maknaz_/vdb/*/*/index.pkl
