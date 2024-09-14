@@ -158,9 +158,9 @@ cython_debug/
 #  and can be added to the global gitignore or merged into this file.  For a more nuclear
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
-maknaz_/byanat/*/*/*.json
-!maknaz_/byanat/*/*/info.json
-maknaz_/byanat/*/*/*/*.wav
+maknaz_/dataset/*/*/*.json
+!maknaz_/dataset/*/*/info.json
+maknaz_/dataset/*/*/*/*.wav
 maknaz_/model/*/*/blobs/
 maknaz_/model/*/*/refs/
 maknaz_/model/*/*/snapshots/

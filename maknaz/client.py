@@ -9,8 +9,8 @@ from .types import *
 
 # get script path
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
-# get full path ARHUB_MODULES_CACHE
-HUB = os.environ.get("ARHUB_MODULES_CACHE", f"{SCRIPT_PATH}/../hub")
+# get full path MAKNAZ_MODULES_CACHE
+HUB = os.environ.get("MAKNAZ_MODULES_CACHE", f"{SCRIPT_PATH}/../maknaz_")
 # get absolute path
 HUB = os.path.abspath(HUB)
 
