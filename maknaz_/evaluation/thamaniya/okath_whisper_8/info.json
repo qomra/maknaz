@@ -1,6 +1,6 @@
 {
     "class": "STTEvaluation",
-    "module": "arhub.types.evaluation",
+    "module": "maknaz.types.evaluation",
     "model": "thamaniya/whisper_8",
     "dataset": "thamaniya/okath",
     "split": "test"

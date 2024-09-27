@@ -4,7 +4,7 @@ import datasets
 import os
 
 # get the path to the hub
-HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
+HUB = os.environ.get("MAKNAZ_MODULES_CACHE", os.path.expanduser("~/.maknaz"))
 
 
 class ArticleSummaryDataset(datasets.GeneratorBasedBuilder):

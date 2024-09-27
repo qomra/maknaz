@@ -117,7 +117,7 @@ class Client:
                 return repo
         # check if it is a model in huggingface hub
         if not repo and not download:
-            print("Repo doesn't exist in arhub index. Use download=True to download the repo from huggingface hub")
+            print("Repo doesn't exist in maknaz index. Use download=True to download the repo from huggingface hub")
             return None
         
         # download repo from huggingface hub

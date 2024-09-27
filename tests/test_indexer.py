@@ -1,6 +1,6 @@
-from arhub.index import Indexer
+from maknaz.index import Indexer
 
 def test_indexer():
-    index = Indexer("./hub/", "./hub/index.json")
+    index = Indexer("./maknaz_/", "./maknaz_/index.json")
     index.index()
     

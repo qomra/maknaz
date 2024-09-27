@@ -1,4 +1,4 @@
-from arhub import pull
+from maknaz import pull
 def test_pull_script_dataset():
     dataset = pull('wali/laws',load=True)
     assert dataset is not None

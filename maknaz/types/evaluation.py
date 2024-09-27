@@ -2,7 +2,7 @@ import os
 from typing import List,Optional,Union
 from langchain_core.pydantic_v1 import BaseModel, Extra, root_validator
 
-HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
+HUB = os.environ.get("MAKNAZ_MODULES_CACHE", os.path.expanduser("~/.maknaz"))
 
 class BaseEvaluation(BaseModel):
     model: str
