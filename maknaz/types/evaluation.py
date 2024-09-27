@@ -28,7 +28,9 @@ class STTEvaluation(BaseEvaluation):
     @staticmethod
     def load(repo):
         import pandas as pd
-        df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv")
+        # read ignore bad lines
+        df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv",on_bad_lines='warn' )
+        #df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv")
         return STTEvaluation(
                 model=repo["model"],
                 dataset=repo["dataset"],
