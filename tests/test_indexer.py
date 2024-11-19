@@ -1,6 +1,10 @@
-from arhub.index import Indexer
+import os
+from maknaz.index import Indexer
+from maknaz.config import LOCAL_HUB_DIR
 
+# get full path MAKNAZ_MODULES_CACHE
+HUB = os.environ.get("MAKNAZ_MODULES_CACHE", LOCAL_HUB_DIR)
 def test_indexer():
-    index = Indexer("./hub/", "./hub/index.json")
+    index = Indexer(HUB, f"{HUB}/index.json")
     index.index()
     

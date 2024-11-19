@@ -4,10 +4,19 @@ import json
 from typing import Optional, List
 from .client import _get_api_path
 
+import sys
+
+if sys.platform == 'win32':
+    path_splitter = "\\"
+elif sys.platform.startswith('linux'):
+    path_splitter = "/"
+
+
+
 class Indexer:
     def __init__(self, path: Optional[str] = None, output_path: Optional[str] = None):
         # remove last / if exists
-        self.api_path = _get_api_path(path).rstrip("/")
+        self.api_path = _get_api_path(path).rstrip(path_splitter)
         self.output_path = output_path
     
     def _index(self, data:List[str], kind:str,current_index:int=0):
@@ -15,11 +24,11 @@ class Indexer:
         map_data = {}
         for d in data:
             # get last two directories
-            full_name = "/".join(d.split("/")[-2:])
-            owner     = d.split("/")[-2]
-            name      = d.split("/")[-1]
+            full_name = "/".join(d.split(path_splitter)[-2:])
+            owner     = d.split(path_splitter)[-2]
+            name      = d.split(path_splitter)[-1]
             # find relative path of api_path
-            path =  kind + "/" + full_name
+            path =  kind + path_splitter + full_name.replace("/",path_splitter)
             json_data.append({
                 "full_name":full_name,
                 "owner":owner,

@@ -1,20 +1,34 @@
 import os
 import json
-import shutil
+import glob
+import logging
 import importlib
 from typing import Optional, List, Any
-from langchain_core.vectorstores import VectorStore
+
+
+
 
 from .types import *
+from .config import LOCAL_MAKNAZ_DIR
 
 # get script path
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # get full path MAKNAZ_MODULES_CACHE
 HUB = os.environ.get("MAKNAZ_MODULES_CACHE", f"{SCRIPT_PATH}/../maknaz_")
+os.environ["HF_HOME"] =  f"{HUB}/cache"
 # get absolute path
 HUB = os.path.abspath(HUB)
 
+def _get_class_name(class_path):
+    import importlib
+    module_name = ".".join(class_path.split(".")[:-1])
+    class_name  = class_path.split(".")[-1]
+    module = importlib.import_module(module_name)
+    model_class = getattr(module, class_name)
+    return model_class
+
 def load_dataset_repo(repo,split=None,**kwargs):
+    logging.info("loading dataset")
     try:
         from datasets import load_dataset
     except ImportError:
@@ -30,10 +44,13 @@ def load_dataset_repo(repo,split=None,**kwargs):
                 download_mode="reuse_cache_if_exists",
                 cache_dir=None)
     elif kind == "audio":
-        if split is None:
-            return load_dataset("audiofolder", data_dir=path,split=split)
-        
-        return {split:load_dataset("audiofolder", data_dir=path,split=split)}
+        extension = repo.get("extension","audiofolder")
+        if extension == "audiofolder":
+            if split is None:
+                return load_dataset("audiofolder", data_dir=path,split=split)
+            return {split:load_dataset("audiofolder", data_dir=path,split=split)}
+        else:
+            return load_dataset(path)
 
 def load_repo(repo, **kwargs):
     if repo["kind"] == "dataset":
@@ -60,10 +77,23 @@ def load_repo(repo, **kwargs):
             res_dict = json.load(f)
         obj = loads(json.dumps(res_dict))
         return obj
-    
-    elif repo["kind"] == "evaluation":
-        evaluation = globals()[repo["class"]].load(repo)
-        return evaluation
+    elif repo["kind"] == "model":
+        import transformers
+        model_class = _get_class_name(repo["class"]) 
+        model = model_class.from_pretrained(f"{HUB}/{repo['path']}",**kwargs.get("model_kwargs",{}))
+        model.eval()
+        to_return = [model]
+        if repo.get("processor",False):
+            processor_class = _get_class_name(repo["processor"])
+            processor = processor_class.from_pretrained(f"{HUB}/{repo['path']}")
+            to_return += [processor]
+        if kwargs.get("return_tokenizer",False):
+            tokenizer = transformers.AutoTokenizer.from_pretrained(f"{HUB}/{repo['path']}",**kwargs.get("tokenizer_kwargs",{}))
+            to_return += [tokenizer]
+        
+
+        return tuple(to_return)
+        
 
 def _get_api_path(api_path: Optional[str]) -> str:
     if api_path is None:
@@ -110,14 +140,15 @@ class Client:
         if repo_full_name in self.index["map"] :
             repo = self.index["repos"][self.index["map"].get(repo_full_name)]
             path = f"{self.api_path}/{repo['path']}"
-            if not download or \
-                repo["kind"] != "model" or \
-                os.path.exists(f"{path}/snapshots") or \
-                os.path.exists(f"{path}/model.safetensors"):
+            safetensors = glob.glob(f"{path}/model*safetensors")
+            bins = glob.glob(f"{path}/*model*.bin")
+
+            if repo["kind"] != "model" or os.path.exists(f"{path}/snapshots") or len(safetensors) > 0 or len(bins) > 0:
                 return repo
         # check if it is a model in huggingface hub
+        
         if not repo and not download:
-            print("Repo doesn't exist in arhub index. Use download=True to download the repo from huggingface hub")
+            print("Repo doesn't exist in maknas index. Use download=True to download the repo from huggingface hub")
             return None
         
         # download repo from huggingface hub
@@ -154,8 +185,7 @@ class Client:
             print(f"Moving {current_path} to {new_path}")
             # make author directory
             os.makedirs(os.path.join(self.api_path,repo_type,repo_author),exist_ok=True)
-            # copy directory to new path
-            shutil.copytree(current_path,new_path, dirs_exist_ok=True)
+            os.rename(current_path,new_path)
  
     
         repo = {
@@ -206,9 +236,10 @@ class Client:
             api_path = self.api_path
 
         # check if data_object is a vectorstore
+        from langchain_core.vectorstores import VectorStore
         if isinstance(data_object, VectorStore):
             # save vectorstore to api_path/repo_full_name
-            save_location = os.path.join(api_path,"vdb", repo_full_name)
+            save_location = os.path.join(self.api_path,"vdb", repo_full_name)
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
             # write info to api_path/repo_full_name/info.json
@@ -221,7 +252,7 @@ class Client:
         
         # check if data_object is evaluation
         if isinstance(data_object,STTEvaluation):
-            save_location = os.path.join(api_path,"evaluation", repo_full_name)
+            save_location = os.path.join(self.api_path,"evaluation", repo_full_name)
             # make directory if not exists
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
@@ -239,10 +270,10 @@ class Client:
         # check if data_object is a finetunedmodel
         if isinstance(data_object,ACFinetunedModel):
             current_local_path = data_object.local_path
-            new_path           = os.path.join(api_path,"model",repo_full_name)
+            new_path           = os.path.join(self.api_path,"model",repo_full_name)
             owner              = repo_full_name.split("/")[0]
-            os.makedirs(os.path.join(api_path,"model",owner),exist_ok=True)
-            shutil.copytree(current_local_path,new_path, dirs_exist_ok=True)
+            os.makedirs(os.path.join(self.api_path,"model",owner),exist_ok=True)
+            os.rename(current_local_path,new_path)
             info = {
                 "base_model": data_object.base_model,
                 "dataset": data_object.dataset
