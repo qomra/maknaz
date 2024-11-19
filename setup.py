@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 
 def get_version() -> str:
-    rel_path = "arhub/__init__.py"
+    rel_path = "maknaz/__init__.py"
     with open(rel_path, "r") as fp:
         for line in fp.read().splitlines():
             if line.startswith("__version__"):
@@ -11,11 +11,11 @@ def get_version() -> str:
     raise RuntimeError("Unable to find version string.")
 
 setup(
-    name="arhub",
+    name="maknaz",
     version=get_version(),
     author="Ridwan Jalali",
     author_email="jalalirs@gmail.com",
-    description="Client library to download and publish models, datasets and other repos on arhub",
+    description="Client library to download and publish models, datasets and other repos on maknaz",
     long_description=open("README.md", "r", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     keywords="model-hub machine-learning models natural-language-processing deep-learning pytorch pretrained-models",

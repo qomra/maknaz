@@ -148,7 +148,11 @@ class Client:
         # check if it is a model in huggingface hub
         
         if not repo and not download:
+<<<<<<< HEAD
             print("Repo doesn't exist in maknas index. Use download=True to download the repo from huggingface hub")
+=======
+            print("Repo doesn't exist in maknaz index. Use download=True to download the repo from huggingface hub")
+>>>>>>> 3ed13913190f4068eb89238c352271ec461a0c77
             return None
         
         # download repo from huggingface hub

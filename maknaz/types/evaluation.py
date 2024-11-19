@@ -2,7 +2,7 @@ import os
 from typing import List,Optional,Union
 from langchain_core.pydantic_v1 import BaseModel, Extra, root_validator
 
-HUB = os.environ.get("ARHUB_MODULES_CACHE", os.path.expanduser("~/.arhub"))
+HUB = os.environ.get("MAKNAZ_MODULES_CACHE", os.path.expanduser("~/.maknaz"))
 
 class BaseEvaluation(BaseModel):
     model: str
@@ -28,7 +28,9 @@ class STTEvaluation(BaseEvaluation):
     @staticmethod
     def load(repo):
         import pandas as pd
-        df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv")
+        # read ignore bad lines
+        df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv",on_bad_lines='warn' )
+        #df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv")
         return STTEvaluation(
                 model=repo["model"],
                 dataset=repo["dataset"],
