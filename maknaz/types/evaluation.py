@@ -1,6 +1,6 @@
 import os
 from typing import List,Optional,Union
-from langchain_core.pydantic_v1 import BaseModel, Extra, root_validator
+from pydantic import BaseModel, Extra, root_validator
 
 HUB = os.environ.get("MAKNAZ_MODULES_CACHE", os.path.expanduser("~/.maknaz"))
 
