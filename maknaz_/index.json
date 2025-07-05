@@ -1,11 +1,127 @@
 {
     "repos": [
         {
+            "full_name": "mojamaa/consultations",
+            "owner": "mojamaa",
+            "name": "consultations",
+            "kind": "dataset",
+            "path": "dataset/mojamaa/consultations",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/alaghani",
+            "owner": "mysam",
+            "name": "alaghani",
+            "kind": "dataset",
+            "path": "dataset/mysam/alaghani"
+        },
+        {
+            "full_name": "mysam/maajim_completion",
+            "owner": "mysam",
+            "name": "maajim_completion",
+            "kind": "dataset",
+            "path": "dataset/mysam/maajim_completion",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/maajim",
+            "owner": "mysam",
+            "name": "maajim",
+            "kind": "dataset",
+            "path": "dataset/mysam/maajim",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/masael",
+            "owner": "mysam",
+            "name": "masael",
+            "kind": "dataset",
+            "path": "dataset/mysam/masael",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/b7oor",
+            "owner": "mysam",
+            "name": "b7oor",
+            "kind": "dataset",
+            "path": "dataset/mysam/b7oor",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/maany",
+            "owner": "mysam",
+            "name": "maany",
+            "kind": "dataset",
+            "path": "dataset/mysam/maany",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/maajim_masael",
+            "owner": "mysam",
+            "name": "maajim_masael",
+            "kind": "dataset",
+            "path": "dataset/mysam/maajim_masael",
+            "loader": "script"
+        },
+        {
+            "full_name": "mysam/masael_chat",
+            "owner": "mysam",
+            "name": "masael_chat",
+            "kind": "dataset",
+            "path": "dataset/mysam/masael_chat",
+            "loader": "script"
+        },
+        {
+            "full_name": "maajim/lisan_alarab",
+            "owner": "maajim",
+            "name": "lisan_alarab",
+            "kind": "dataset",
+            "path": "dataset/maajim/lisan_alarab"
+        },
+        {
+            "full_name": "maajim/ommat",
+            "owner": "maajim",
+            "name": "ommat",
+            "kind": "dataset",
+            "path": "dataset/maajim/ommat",
+            "loader": "script"
+        },
+        {
+            "full_name": "thamaniya/7iwar.zip",
+            "owner": "thamaniya",
+            "name": "7iwar.zip",
+            "kind": "dataset",
+            "path": "dataset/thamaniya/7iwar.zip"
+        },
+        {
+            "full_name": "thamaniya/okathsmall",
+            "owner": "thamaniya",
+            "name": "okathsmall",
+            "kind": "dataset",
+            "path": "dataset/thamaniya/okathsmall",
+            "loader": "audio"
+        },
+        {
+            "full_name": "thamaniya/okathlong",
+            "owner": "thamaniya",
+            "name": "okathlong",
+            "kind": "dataset",
+            "path": "dataset/thamaniya/okathlong"
+        },
+        {
             "full_name": "thamaniya/7iwar",
             "owner": "thamaniya",
             "name": "7iwar",
             "kind": "dataset",
             "path": "dataset/thamaniya/7iwar",
+            "loader": "audio"
+        },
+        {
+            "full_name": "thamaniya/7iwar_small",
+            "owner": "thamaniya",
+            "name": "7iwar_small",
+            "kind": "dataset",
+            "path": "dataset/thamaniya/7iwar_small",
             "loader": "audio"
         },
         {
@@ -17,21 +133,6 @@
             "loader": "audio"
         },
         {
-            "full_name": "thamaniya/okathsmall",
-            "owner": "thamaniya",
-            "name": "okathsmall",
-            "kind": "dataset",
-            "path": "dataset/thamaniya/okathsmall",
-            "loader": "audio"
-        },
-        {
-            "full_name": "maajim/lisan_alarab",
-            "owner": "maajim",
-            "name": "lisan_alarab",
-            "kind": "dataset",
-            "path": "dataset/maajim/lisan_alarab"
-        },
-        {
             "full_name": "wali/laws",
             "owner": "wali",
             "name": "laws",
@@ -40,36 +141,54 @@
             "loader": "script"
         },
         {
-            "full_name": "thamaniya/whisper_8_large",
-            "owner": "thamaniya",
-            "name": "whisper_8_large",
-            "kind": "model",
-            "path": "model/thamaniya/whisper_8_large",
-            "base_model": "openai/whisper-large-v3",
-            "dataset": "thamaniya/7iwar"
+            "full_name": "aldiwan/poems",
+            "owner": "aldiwan",
+            "name": "poems",
+            "kind": "dataset",
+            "path": "dataset/aldiwan/poems",
+            "loader": "script"
         },
         {
-            "full_name": "thamaniya/whisper_8_small_fze",
-            "owner": "thamaniya",
-            "name": "whisper_8_small_fze",
-            "kind": "model",
-            "path": "model/thamaniya/whisper_8_small_fze",
-            "base_model": "openai/whisper-small",
-            "dataset": "thamaniya/7iwar"
+            "full_name": "tyf/tyf.py",
+            "owner": "tyf",
+            "name": "tyf.py",
+            "kind": "dataset",
+            "path": "dataset/tyf/tyf.py"
         },
         {
-            "full_name": "openai/whisper-small",
-            "owner": "openai",
-            "name": "whisper-small",
-            "kind": "model",
-            "path": "model/openai/whisper-small"
+            "full_name": "tyf/mojam.json",
+            "owner": "tyf",
+            "name": "mojam.json",
+            "kind": "dataset",
+            "path": "dataset/tyf/mojam.json"
         },
         {
-            "full_name": "openai/whisper-large-v3",
-            "owner": "openai",
-            "name": "whisper-large-v3",
-            "kind": "model",
-            "path": "model/openai/whisper-large-v3"
+            "full_name": "tyf/base_prompt.rtl.text",
+            "owner": "tyf",
+            "name": "base_prompt.rtl.text",
+            "kind": "dataset",
+            "path": "dataset/tyf/base_prompt.rtl.text"
+        },
+        {
+            "full_name": "tyf/info.json",
+            "owner": "tyf",
+            "name": "info.json",
+            "kind": "dataset",
+            "path": "dataset/tyf/info.json"
+        },
+        {
+            "full_name": "tyf/tyf.json",
+            "owner": "tyf",
+            "name": "tyf.json",
+            "kind": "dataset",
+            "path": "dataset/tyf/tyf.json"
+        },
+        {
+            "full_name": "tyf/test.ipynb",
+            "owner": "tyf",
+            "name": "test.ipynb",
+            "kind": "dataset",
+            "path": "dataset/tyf/test.ipynb"
         },
         {
             "full_name": "wali/lawsvdb",
@@ -79,30 +198,6 @@
             "path": "vdb/wali/lawsvdb",
             "class": "VDB",
             "module": "arqam.vdb"
-        },
-        {
-            "full_name": "thamaniya/okath_whisper_large_v3",
-            "owner": "thamaniya",
-            "name": "okath_whisper_large_v3",
-            "kind": "evaluation",
-            "path": "evaluation/thamaniya/okath_whisper_large_v3",
-            "class": "STTEvaluation",
-            "module": "maknaz.types.evaluation",
-            "model": "openai/whisper-large-v3",
-            "dataset": "thamaniya/okath",
-            "split": "test"
-        },
-        {
-            "full_name": "thamaniya/okath_whisper_8",
-            "owner": "thamaniya",
-            "name": "okath_whisper_8",
-            "kind": "evaluation",
-            "path": "evaluation/thamaniya/okath_whisper_8",
-            "class": "STTEvaluation",
-            "module": "maknaz.types.evaluation",
-            "model": "thamaniya/whisper_8",
-            "dataset": "thamaniya/okath",
-            "split": "test"
         },
         {
             "full_name": "thamaniya/okath_whisper_8_medium",
@@ -117,15 +212,53 @@
             "split": "test"
         },
         {
-            "full_name": "thamaniya/7iwar_whisper_8_small_fze",
+            "full_name": "thamaniya/okath_whisper_large_v3",
             "owner": "thamaniya",
-            "name": "7iwar_whisper_8_small_fze",
+            "name": "okath_whisper_large_v3",
             "kind": "evaluation",
-            "path": "evaluation/thamaniya/7iwar_whisper_8_small_fze",
+            "path": "evaluation/thamaniya/okath_whisper_large_v3",
             "class": "STTEvaluation",
             "module": "maknaz.types.evaluation",
-            "model": "thamaniya/whisper_8_small_fze",
-            "dataset": "thamaniya/7iwar",
+            "model": "openai/whisper-large-v3",
+            "dataset": "thamaniya/okath",
+            "split": "test"
+        },
+        {
+            "full_name": "thamaniya/evaluation.ipynb",
+            "owner": "thamaniya",
+            "name": "evaluation.ipynb",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/evaluation.ipynb"
+        },
+        {
+            "full_name": "thamaniya/wer.png",
+            "owner": "thamaniya",
+            "name": "wer.png",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/wer.png"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_8_large_v3",
+            "owner": "thamaniya",
+            "name": "okath_whisper_8_large_v3",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_8_large_v3",
+            "class": "STTEvaluation",
+            "module": "arhub.types.evaluation",
+            "model": "thamaniya/whisper_8_large_v3",
+            "dataset": "thamaniya/okath",
+            "split": "test"
+        },
+        {
+            "full_name": "thamaniya/okath_whisper_small",
+            "owner": "thamaniya",
+            "name": "okath_whisper_small",
+            "kind": "evaluation",
+            "path": "evaluation/thamaniya/okath_whisper_small",
+            "class": "STTEvaluation",
+            "module": "maknaz.types.evaluation",
+            "model": "openai/whisper-small",
+            "dataset": "thamaniya/okath",
             "split": "test"
         },
         {
@@ -141,71 +274,76 @@
             "split": "test"
         },
         {
-            "full_name": "thamaniya/7iwar_whisper_small",
+            "full_name": "thamaniya/okath_whisper_8",
             "owner": "thamaniya",
-            "name": "7iwar_whisper_small",
+            "name": "okath_whisper_8",
             "kind": "evaluation",
-            "path": "evaluation/thamaniya/7iwar_whisper_small",
+            "path": "evaluation/thamaniya/okath_whisper_8",
             "class": "STTEvaluation",
             "module": "maknaz.types.evaluation",
-            "model": "openai/whisper-small",
-            "dataset": "thamaniya/7iwar",
-            "split": "test"
-        },
-        {
-            "full_name": "thamaniya/okath_whisper_small",
-            "owner": "thamaniya",
-            "name": "okath_whisper_small",
-            "kind": "evaluation",
-            "path": "evaluation/thamaniya/okath_whisper_small",
-            "class": "STTEvaluation",
-            "module": "maknaz.types.evaluation",
-            "model": "openai/whisper-small",
+            "model": "thamaniya/whisper_8",
             "dataset": "thamaniya/okath",
             "split": "test"
         }
     ],
     "map": {
-        "thamaniya/7iwar": 0,
-        "thamaniya/okath": 1,
-        "thamaniya/okathsmall": 2,
-        "maajim/lisan_alarab": 3,
-        "wali/laws": 4,
-        "thamaniya/whisper_8_large": 5,
-        "thamaniya/whisper_8_small_fze": 6,
-        "openai/whisper-small": 7,
-        "openai/whisper-large-v3": 8,
-        "wali/lawsvdb": 9,
-        "thamaniya/okath_whisper_large_v3": 10,
-        "thamaniya/okath_whisper_8": 11,
-        "thamaniya/okath_whisper_8_medium": 12,
-        "thamaniya/7iwar_whisper_8_small_fze": 13,
-        "thamaniya/okath_whisper_medium": 14,
-        "thamaniya/7iwar_whisper_small": 15,
-        "thamaniya/okath_whisper_small": 16
+        "mojamaa/consultations": 0,
+        "mysam/alaghani": 1,
+        "mysam/maajim_completion": 2,
+        "mysam/maajim": 3,
+        "mysam/masael": 4,
+        "mysam/b7oor": 5,
+        "mysam/maany": 6,
+        "mysam/maajim_masael": 7,
+        "mysam/masael_chat": 8,
+        "maajim/lisan_alarab": 9,
+        "maajim/ommat": 10,
+        "thamaniya/7iwar.zip": 11,
+        "thamaniya/okathsmall": 12,
+        "thamaniya/okathlong": 13,
+        "thamaniya/7iwar": 14,
+        "thamaniya/7iwar_small": 15,
+        "thamaniya/okath": 16,
+        "wali/laws": 17,
+        "aldiwan/poems": 18,
+        "tyf/tyf.py": 19,
+        "tyf/mojam": 20,
+        "tyf/base_prompt.rtl.text": 21,
+        "tyf/info": 22,
+        "tyf/tyf": 23,
+        "tyf/test.ipynb": 24,
+        "wali/lawsvdb": 25,
+        "thamaniya/okath_whisper_8_medium": 26,
+        "thamaniya/okath_whisper_large_v3": 27,
+        "thamaniya/evaluation.ipynb": 28,
+        "thamaniya/wer.png": 29,
+        "thamaniya/okath_whisper_8_large_v3": 30,
+        "thamaniya/okath_whisper_small": 31,
+        "thamaniya/okath_whisper_medium": 32,
+        "thamaniya/okath_whisper_8": 33
     },
     "dataset": [
         0,
-        5
+        25
     ],
     "model": [
-        5,
-        9
+        25,
+        25
     ],
     "prompt": [
-        9,
-        9
+        25,
+        25
     ],
     "agent": [
-        9,
-        9
+        25,
+        25
     ],
     "vdb": [
-        9,
-        10
+        25,
+        26
     ],
     "evaluation": [
-        10,
-        17
+        26,
+        34
     ]
 }

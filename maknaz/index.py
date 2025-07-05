@@ -8,7 +8,7 @@ import sys
 
 if sys.platform == 'win32':
     path_splitter = "\\"
-elif sys.platform.startswith('linux'):
+elif sys.platform.startswith('linux') or sys.platform.startswith('darwin'):
     path_splitter = "/"
 
 
