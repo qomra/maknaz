@@ -1,6 +1,5 @@
-from typing import List,Optional,Union
-from langchain_core.pydantic_v1 import BaseModel, Extra, root_validator
-
+from typing import Optional
+from pydantic import BaseModel
 
 class BaseACModel(BaseModel):
     name: str

@@ -15,6 +15,9 @@ from .config import LOCAL_MAKNAZ_DIR
 SCRIPT_PATH = os.path.dirname(os.path.realpath(__file__))
 # get full path MAKNAZ_MODULES_CACHE
 HUB = os.environ.get("MAKNAZ_MODULES_CACHE", f"{SCRIPT_PATH}/../maknaz_")
+USE_LOCAL = os.environ.get("USE_LOCAL",False)
+
+
 os.environ["HF_HOME"] =  f"{HUB}/cache"
 # get absolute path
 HUB = os.path.abspath(HUB)
