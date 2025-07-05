@@ -24,7 +24,7 @@ MAX_FULL_VERSES = 8
 # RHYME_SAMPLING_PERCENTAGE = 100% means rhyme examples = generation examples
 # RHYME_SAMPLING_PERCENTAGE = 50% means rhyme examples = 0.5 * generation examples  
 # RHYME_SAMPLING_PERCENTAGE = 200% means rhyme examples = 2 * generation examples
-RHYME_SAMPLING_PERCENTAGE = 100  # Percentage of rhyme examples relative to generation task size
+RHYME_SAMPLING_PERCENTAGE = 700  # Percentage of rhyme examples relative to generation task size
 
 print(f"🎯 Combined Arabic Poetry Dataset Configuration:")
 print(f"📊 Poems JSONL File: {POEMS_JSONL_FILE}")
