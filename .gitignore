@@ -166,3 +166,4 @@ maknaz_/model/*/*/refs/
 maknaz_/model/*/*/snapshots/
 maknaz_/vdb/*/*/index.faiss
 maknaz_/vdb/*/*/index.pkl
+maknaz_/index.json

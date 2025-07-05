@@ -48,6 +48,20 @@
             "loader": "script"
         },
         {
+            "full_name": "mysam/rhyme",
+            "owner": "mysam",
+            "name": "rhyme",
+            "kind": "dataset",
+            "path": "dataset/mysam/rhyme"
+        },
+        {
+            "full_name": "mysam/alaghani_rhyme",
+            "owner": "mysam",
+            "name": "alaghani_rhyme",
+            "kind": "dataset",
+            "path": "dataset/mysam/alaghani_rhyme"
+        },
+        {
             "full_name": "mysam/maany",
             "owner": "mysam",
             "name": "maany",
@@ -293,57 +307,59 @@
         "mysam/maajim": 3,
         "mysam/masael": 4,
         "mysam/b7oor": 5,
-        "mysam/maany": 6,
-        "mysam/maajim_masael": 7,
-        "mysam/masael_chat": 8,
-        "maajim/lisan_alarab": 9,
-        "maajim/ommat": 10,
-        "thamaniya/7iwar.zip": 11,
-        "thamaniya/okathsmall": 12,
-        "thamaniya/okathlong": 13,
-        "thamaniya/7iwar": 14,
-        "thamaniya/7iwar_small": 15,
-        "thamaniya/okath": 16,
-        "wali/laws": 17,
-        "aldiwan/poems": 18,
-        "tyf/tyf.py": 19,
-        "tyf/mojam": 20,
-        "tyf/base_prompt.rtl.text": 21,
-        "tyf/info": 22,
-        "tyf/tyf": 23,
-        "tyf/test.ipynb": 24,
-        "wali/lawsvdb": 25,
-        "thamaniya/okath_whisper_8_medium": 26,
-        "thamaniya/okath_whisper_large_v3": 27,
-        "thamaniya/evaluation.ipynb": 28,
-        "thamaniya/wer.png": 29,
-        "thamaniya/okath_whisper_8_large_v3": 30,
-        "thamaniya/okath_whisper_small": 31,
-        "thamaniya/okath_whisper_medium": 32,
-        "thamaniya/okath_whisper_8": 33
+        "mysam/rhyme": 6,
+        "mysam/alaghani_rhyme": 7,
+        "mysam/maany": 8,
+        "mysam/maajim_masael": 9,
+        "mysam/masael_chat": 10,
+        "maajim/lisan_alarab": 11,
+        "maajim/ommat": 12,
+        "thamaniya/7iwar.zip": 13,
+        "thamaniya/okathsmall": 14,
+        "thamaniya/okathlong": 15,
+        "thamaniya/7iwar": 16,
+        "thamaniya/7iwar_small": 17,
+        "thamaniya/okath": 18,
+        "wali/laws": 19,
+        "aldiwan/poems": 20,
+        "tyf/tyf.py": 21,
+        "tyf/mojam": 22,
+        "tyf/base_prompt.rtl.text": 23,
+        "tyf/info": 24,
+        "tyf/tyf": 25,
+        "tyf/test.ipynb": 26,
+        "wali/lawsvdb": 27,
+        "thamaniya/okath_whisper_8_medium": 28,
+        "thamaniya/okath_whisper_large_v3": 29,
+        "thamaniya/evaluation.ipynb": 30,
+        "thamaniya/wer.png": 31,
+        "thamaniya/okath_whisper_8_large_v3": 32,
+        "thamaniya/okath_whisper_small": 33,
+        "thamaniya/okath_whisper_medium": 34,
+        "thamaniya/okath_whisper_8": 35
     },
     "dataset": [
         0,
-        25
+        27
     ],
     "model": [
-        25,
-        25
+        27,
+        27
     ],
     "prompt": [
-        25,
-        25
+        27,
+        27
     ],
     "agent": [
-        25,
-        25
+        27,
+        27
     ],
     "vdb": [
-        25,
-        26
+        27,
+        28
     ],
     "evaluation": [
-        26,
-        34
+        28,
+        36
     ]
 }
