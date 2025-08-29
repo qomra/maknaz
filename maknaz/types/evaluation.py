@@ -2,10 +2,12 @@ import os
 from typing import List,Optional,Union
 from pydantic import BaseModel, Extra, root_validator
 
-HUB = os.environ.get("MAKNAZ_MODULES_CACHE", os.path.expanduser("~/.maknaz"))
+#HUB = os.environ.get("MAKNAZ_MODULES_CACHE", os.path.expanduser("~/.maknaz"))
+from maknaz.config import LOCAL_MAKNAZ_DIR
 
 class BaseEvaluation(BaseModel):
     model: str
+    model_args: dict = {}
     dataset: str
     split: Optional[str]
 
@@ -29,15 +31,20 @@ class STTEvaluation(BaseEvaluation):
     def load(repo):
         import pandas as pd
         # read ignore bad lines
-        df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv",on_bad_lines='warn' )
+        df = pd.read_csv(f"{LOCAL_MAKNAZ_DIR}/{repo['path']}/{repo['split']}.csv",on_bad_lines='warn' )
         #df = pd.read_csv(f"{HUB}/{repo['path']}/{repo['split']}.csv")
+        df["prediction"] = df["prediction"].astype(str)
+        df["actual"] = df["actual"].astype(str)
         return STTEvaluation(
                 model=repo["model"],
                 dataset=repo["dataset"],
+                split=repo["split"],
                 file_name=df["file_name"].tolist(),
-                actual=df["actual"].tolist(),
-                prediction=df["prediction"].tolist(),
-                wer=df["wer"].tolist())
+                actual=df["actual"].values.tolist(),
+                prediction=df["prediction"].values.tolist(),
+                wer=df["wer"].values.tolist(),
+                model_args=repo["model_args"]
+                )
     
     def save_local(self,path):
         splits     = [self.split] if self.split else ["train","valid","test"]
@@ -46,7 +53,7 @@ class STTEvaluation(BaseEvaluation):
         prediction = self.prediction if type(self.prediction[0]) == list else [self.prediction]
         wer        = self.wer if type(self.wer[0]) == list else [self.wer]
         for split_name,fileList,alist,plist,werlist in zip(splits,file_name,actual,prediction,wer):
-            with open(f"{path}/{split_name}.csv","w") as f:
+            with open(f"{path}/{split_name}.csv","w",encoding="utf-8") as f:
                 f.write("file_name,actual,prediction,wer\n")
                 for fn,a,p,e in zip(fileList,alist,plist,werlist):
                     f.write(f"{fn},{a},{p},{e}\n")

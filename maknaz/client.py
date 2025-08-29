@@ -80,6 +80,7 @@ def load_repo(repo, **kwargs):
             res_dict = json.load(f)
         obj = loads(json.dumps(res_dict))
         return obj
+    
     elif repo["kind"] == "model":
         import transformers
         model_class = _get_class_name(repo["class"]) 
@@ -96,7 +97,15 @@ def load_repo(repo, **kwargs):
         
 
         return tuple(to_return)
-        
+    
+    elif repo["kind"] == "evaluation":
+        from maknaz.types.evaluation import STTEvaluation
+        # read model_args from info.json
+        with open(f"{HUB}/{repo['path']}/info.json") as f:
+            model_args = json.load(f)
+        repo["model_args"] = model_args.get("model_args",{})
+        evaluation = STTEvaluation.load(repo)
+        return evaluation
 
 def _get_api_path(api_path: Optional[str]) -> str:
     if api_path is None:
@@ -190,7 +199,7 @@ class Client:
             os.makedirs(os.path.join(self.api_path,repo_type,repo_author),exist_ok=True)
             os.rename(current_path,new_path)
  
-    
+
         repo = {
             'full_name': repo_full_name,
             'owner': repo_author, 
@@ -260,12 +269,14 @@ class Client:
             os.makedirs(save_location,exist_ok=True)
             data_object.save_local(save_location)
             # write info to api_path/repo_full_name/info.json
+            
             info = {
                 "class": data_object.__class__.__name__,
                 "module": data_object.__module__,
                 "model": data_object.model,
                 "dataset": data_object.dataset,
-                "split": data_object.split
+                "split": data_object.split,
+                "model_args": data_object.model_args
             }
             with open(os.path.join(save_location, "info.json"), "w") as f:
                 json.dump(info, f,indent=4)
